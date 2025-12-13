@@ -1,0 +1,126 @@
+.tutorial-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9998;
+  pointer-events: auto;
+}
+
+.tutorial-card {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(20px) saturate(180%);
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  width: 480px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.tutorial-sections {
+  display: flex;
+}
+
+.tutorial-section {
+  flex: 1;
+  border-right: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.tutorial-section:last-child {
+  border-right: none;
+}
+
+.tutorial-header {
+  padding: 16px 20px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.tutorial-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0;
+}
+
+.mouse-icon,
+.trackpad-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tutorial-body {
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.tutorial-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+}
+
+.tutorial-label {
+  color: #4b5563;
+  font-weight: 600;
+}
+
+.tutorial-value {
+  color: #111827;
+  font-weight: 700;
+}
+
+.tutorial-footer {
+  padding: 12px 24px;
+  text-align: center;
+  font-size: 12px;
+  color: #6b7280;
+  font-weight: 600;
+  background: rgba(0, 0, 0, 0.02);
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .tutorial-overlay {
+    padding-top: 60px;
+  }
+
+  .tutorial-card {
+    width: 90%;
+    max-width: 600px;
+  }
+
+  .tutorial-sections {
+    flex-direction: column;
+  }
+
+  .tutorial-section {
+    border-right: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .tutorial-section:last-child {
+    border-bottom: none;
+  }
+
+  .tutorial-body {
+    padding: 16px 20px;
+  }
+
+  .tutorial-item {
+    font-size: 13px;
+  }
+}

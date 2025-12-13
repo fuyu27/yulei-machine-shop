@@ -1,0 +1,116 @@
+.social-buttons-container {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  z-index: 1000;
+}
+
+.social-button {
+  display: inline-block;
+}
+
+.social-link {
+  text-decoration: none;
+  display: block;
+}
+
+.social-btn {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+
+.floater {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.kaggle-floater {
+  background-color: #20beff;
+}
+
+.github-floater {
+  background-color: #000000;
+}
+
+.linkedin-floater {
+  background-color: #3b82f6;
+}
+
+.email-floater {
+  background-color: #f87171;
+}
+
+.social-btn:hover .floater {
+  top: -32px;
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.3);
+}
+
+.icon {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.kaggle-icon {
+  border-color: #20beff;
+}
+
+.github-icon {
+  border-color: #000000;
+}
+
+.linkedin-icon {
+  border-color: #3b82f6;
+}
+
+.email-icon {
+  border-color: #f87171;
+}
+
+.social-path {
+  fill: white;
+  transition: fill 0.3s ease;
+}
+
+.social-btn:hover .social-path {
+  fill: #171543;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .social-buttons-container {
+    bottom: 20px;
+    right: 20px;
+    gap: 12px;
+  }
+
+  .social-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .social-btn:hover .floater {
+    top: -24px;
+  }
+}
