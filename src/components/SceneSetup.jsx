@@ -35,7 +35,8 @@ function setupScene(mountRef, setLoading) {
   });
 
   const loader = new GLTFLoader();
-  loader.load('/models/yulei_machine_shop.glb', (gltf) => {
+  // Load GLB from GitHub (hosted via Git LFS)
+  loader.load('https://github.com/fuyu27/yulei-machine-shop/raw/main/public/models/yulei_machine_shop.glb', (gltf) => {
     scene.add(gltf.scene);
     gltf.scene.scale.set(1, 1, 1);
     gltf.scene.position.set(0, 0, 0);
