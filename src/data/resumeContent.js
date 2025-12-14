@@ -5,14 +5,20 @@ export const LABELS = {
   ix_MbotAssembled: "Projects",
   ix_AprilTagCube: "Planning & Perception",
   ix_Dremmel: "FIRST Robotics",
-  ix_BostonDynamicsDog: "Languages + Core Competencies",
-  ix_Drawers: "Dev Skills & Technical Tools",
-  // ix_Flowers: "Skills & Tools",
+  ix_Drawers: "Dev Skills & Tools",
+  ix_BostonDynamicsDog: "Languages + Core Competencies"
 };
 
 export const CONTENT = {
   ix_Humanoid: {
-    title: "Hej, I'm Yulei Fu!",
+    title: "Hi, I'm Yulei :)",
+    headshot: "/images/bio/2025headshot.jpeg",
+    photos: [
+      {
+        src: "/images/bio/guitar.png",
+        caption: "Kilby Girl - No Video Included"
+      }
+    ],
     sections: [
       {
         heading: "About Me",
@@ -20,8 +26,8 @@ export const CONTENT = {
         bullets: [
           "I'm interested in novel topics (robotics), and everything that comes with the territory (embedded software, some mechanical engineering, and mostly perception)",
           "I enjoy indulging in challenging problems, whether it be stalking research papers, tinkering with \"jank\" (favorite FRC term) robots, or building somewhat relevant software",
-          "Some of my favorite projects remain NDA or private, but I'm always excited to share what I can about my work in robotics and embedded systems. I hate to admit it, but I apparently still do enjoy CAD in my retirment as a design team member on my FRC team, so much so that I made this model in Fusion360 to avoid using the more complex parts of Blender.",
-          "Outside of robotics, I play electric guitar (decently, I like to believe) and would like to pick up drums soon. I love painting and enjoy using my talents for goofy cards for friends"
+          "Some of my favorite projects remain NDA or private, but I'm always excited to share what I can about my work in robotics and embedded systems. I hate to admit it, but I apparently secretly enjoy CAD in my retirement as a design team member on my FRC team.",
+          "Outside of robotics, I play electric guitar (decently, I like to believe) and would like to pick up drums soon. I love painting and enjoy using my talents for goofy cards and whatnot for friends."
         ]
       },
       {
@@ -37,9 +43,7 @@ export const CONTENT = {
     chips: [
       "Robotics",
       "Embedded Systems",
-      "Software Engineering",
-      "Team Leadership",
-      "Problem Solving"
+      "Software Engineering"
     ]
   },
 
@@ -70,20 +74,21 @@ export const CONTENT = {
         heading: "Amazon Robotics - Embedded Software Engineer Co-Op",
         subheading: "Jan 2025 - June 2025 | Westborough, MA",
         bullets: [
-          "Designed and owned a C++ logging and system log capture pipeline for a safety-certified controller, cutting issue-reproduction time by 85% (6 hrs to 0.75 hrs)",
-          "Developed a robust multithreaded D-Bus service for embedded Linux controllers, aggregating logs from multiple subsystems with safe batching and low-latency IPC",
-          "Deployed remote diagnostics stack with Wi-Fi health API, reducing field-troubleshooting from 2+ hours to 0.03 hours",
-          "Shipped a telemetry pipeline delivering 10K+ messages/day to AWS over MQTT, cutting data-loss by 94%"
+          "Designed and owned a C++ logging and system log capture pipeline for a safety-certified controller to replace an ad-hoc debugging process, cutting issue-reproduction time by 85% (6 hrs to 0.75 hrs)",
+          "Developed a robust multithreaded D-Bus service for embedded Linux safety systems, aggregating logs from multiple subsystems with safe batching, deterministic behavior, and low-latency IPC",
+          "Deployed and designed a remote Wi-Fi diagnostics API, adding to the system’s hardware-diagnostics suite, reducing field-troubleshooting from 2+ hours to 0.03 hours for on-sites that previously had no remote pathway to inspect connectivity issues",
+          "Architected, implemented, and shipped a telemetry pipeline delivering 10K+ messages/day to AWS S3 over MQTT, cutting data-loss by 94% and enabling a 7-engineer diagnostics team to finally access consistent, fleet-reliable field data"
         ]
       },
       {
         heading: "Stirling Research Group - Research Intern",
         subheading: "Nov 2024 - Jan 2025 | Ann Arbor, MI",
         bullets: [
-          "Implemented the Keytel metabolic-rate model in JavaScript for 4+ hour EVA simulations with real-time BTU tracking",
-          "Architected data parsing from wearable heart-rate sensors at 20-second intervals with 100% uptime",
-          "Designed participant interface and experimenter dashboard, improving post-session analysis efficiency by 40%",
-          "Connected nRF52840 based heart-rate wearable to testbench via Bluetooth"
+          "Implemented the Keytel metabolic-rate model in JavaScript to convert real-time heart-rate data into energy-expenditure estimates, enabling accurate British Thermal Unit (BTU) tracking for 4+ hour extravehicular activity (EVA) simulations",
+          "Architected data parsing from wearable heart-rate data at 20-second intervals, applied time-weighted averaging, and updated metabolic-rate estimates with 100% uptime across all test sessions",
+          "Designed and developed the participant interface, displaying cumulative BTU burn and max BTU limits, allowing participants to monitor resource consumption during geological deviation tasks",
+          "Created the experimenter dashboard with real-time heart rate monitoring, configurable alert thresholds, labeled task segments, and automatic data export, improving post-session analysis efficiency by 40%",
+          "Connected the nRF52840 based heart-rate wearable to the testbench via bluetooth"
         ]
       },
       {
@@ -130,28 +135,19 @@ export const CONTENT = {
           "Advanced robotic manipulation and control systems for complex tasks",
           "Real-time embedded systems optimization and safety-critical software",
           "Multi-robot coordination and swarm robotics",
-          "Autonomous navigation in unstructured environments",
-          "Human-robot interaction and collaborative robotics"
+          "Autonomous navigation in unstructured environments"
         ]
       },
       {
-        heading: "Technologies I Want to Explore",
+        heading: "Technologies I'd Love to Explore",
         bullets: [
           "Advanced control theory and model predictive control",
           "Deep learning for robotics perception and planning",
           "Hardware acceleration (FPGAs, custom ASICs) for real-time processing",
-          "Formal verification methods for safety-critical systems",
           "Novel sensor fusion techniques for robust state estimation"
         ]
       }
     ],
-    chips: [
-      "Future Goals",
-      "Research",
-      "Innovation",
-      "Continuous Learning",
-      "Robotics"
-    ]
   },
 
   ix_AprilTagCube: {
@@ -190,7 +186,7 @@ export const CONTENT = {
           "Built obstacle distance grid using 8-connected BFS for safe path planning with wall clearance penalties",
           "Implemented A* planner with Euclidean heuristic achieving <0.01s planning time for maze navigation",
           "Developed frontier detection using adjacency analysis to identify exploration boundaries between known/unknown space",
-          "Created 4-state autonomous exploration system (IDLE → EXPLORING → RETURNING → ESCAPING) with dynamic goal replanning"
+          "Created 4-state autonomous exploration system (IDLE -> EXPLORING -> RETURNING -> ESCAPING) with dynamic goal replanning"
         ]
       }
     ],
@@ -355,37 +351,4 @@ export const CONTENT = {
     ]
   },
 
-  // ix_Drawers: {
-  //   title: "Dev Skills & Technical Tools",
-  //   sections: [
-  //     {
-  //       heading: "Development Skills",
-  //       bullets: [
-  //         "Strong foundation in C/C++ for systems programming and robotics",
-  //         "Proficient in Python for automation, data analysis, and prototyping",
-  //         "Experience with ROS2 for distributed robotics systems",
-  //         "Cloud development with AWS (IoT Core, S3, MQTT)",
-  //         "Embedded Linux development with Yocto and custom distributions"
-  //       ]
-  //     },
-  //     {
-  //       heading: "Technical Tools",
-  //       bullets: [
-  //         "Version Control: Git, GitHub",
-  //         "Containerization: Docker",
-  //         "CAD: Fusion360, SolidWorks",
-  //         "3D Modeling: Blender",
-  //         "Computer Vision: OpenCV",
-  //         "Numerical Computing: NumPy, MATLAB"
-  //       ]
-  //     }
-  //   ],
-  //   chips: [
-  //     "Software Development",
-  //     "Robotics",
-  //     "Cloud Computing",
-  //     "CAD",
-  //     "Version Control"
-  //   ]
-  // }
 };
