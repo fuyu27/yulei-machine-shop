@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader';
 import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader';
 import { LABELS } from '../data/resumeContent';
 
@@ -34,16 +35,25 @@ function setupScene(mountRef, setLoading) {
     scene.background = backgroundColor;
   });
 
+  // Setup DRACO loader for compressed GLB files
+  const dracoLoader = new DRACOLoader();
+  dracoLoader.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.6/');
+  
   const loader = new GLTFLoader();
+  loader.setDRACOLoader(dracoLoader);
   // Load optimized GLB model
-  loader.load('/models/yulei_machine_shop.glb', (gltf) => {
-    scene.add(gltf.scene);
-    gltf.scene.scale.set(1, 1, 1);
-    gltf.scene.position.set(0, 0, 0);
+  console.log('Starting to load GLB model...');
+  loader.load(
+    '/models/yulei_machine_shop.glb',
+    (gltf) => {
+      console.log('GLB model loaded successfully!', gltf);
+      scene.add(gltf.scene);
+      gltf.scene.scale.set(1, 1, 1);
+      gltf.scene.position.set(0, 0, 0);
 
-    const interactiveGroups = {};
+      const interactiveGroups = {};
 
-    gltf.scene.traverse((child) => {
+      gltf.scene.traverse((child) => {
       if (child.name && child.name.startsWith('ix_')) {
         interactiveGroups[child.name] = child;
         console.log(`Found interactive node: ${child.name} (type: ${child.type})`);
@@ -67,6 +77,13 @@ function setupScene(mountRef, setLoading) {
 
     console.log('Total interactive groups:', Object.keys(interactiveGroups).length);
     console.log('Total interactive meshes:', outlinedMeshes.length);
+    setLoading(false);
+  },
+  (progress) => {
+    console.log('Loading progress:', (progress.loaded / progress.total * 100).toFixed(2) + '%');
+  },
+  (error) => {
+    console.error('Error loading GLB model:', error);
     setLoading(false);
   });
 
