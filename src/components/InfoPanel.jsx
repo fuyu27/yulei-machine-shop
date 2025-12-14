@@ -258,6 +258,28 @@ export default function InfoPanel({ onClose, contentKey }) {
           {content.title}
         </h2>
         
+        {/* Headshot image */}
+        {content.headshot && (
+          <div style={{
+            display: 'flex',
+            justifyContent: 'center',
+            marginBottom: '1.5rem'
+          }}>
+            <img
+              src={content.headshot}
+              alt="Headshot"
+              style={{
+                width: '180px',
+                height: '180px',
+                borderRadius: '50%',
+                objectFit: 'cover',
+                border: '4px solid #233C67',
+                boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)'
+              }}
+            />
+          </div>
+        )}
+        
         {content.sections.map((section, idx) => (
           <div key={idx} style={{ marginBottom: '1.5rem' }}>
             {section.heading && (
