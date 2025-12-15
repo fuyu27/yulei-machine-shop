@@ -15,14 +15,38 @@ function ContactForm({ onClose }) {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // For now, just log the form data
-    console.log('Form submitted:', formData);
-    // You can add email functionality here later
-    alert('Thanks for reaching out! I\'ll get back to you soon.');
-    setFormData({ name: '', email: '', message: '' });
-    onClose();
+    
+    try {
+      // Use FormSubmit with AJAX endpoint
+      const response = await fetch('https://formsubmit.co/ajax/yuleifu@umich.edu', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          _subject: `Portfolio Contact from ${formData.name}`
+        })
+      });
+
+      const data = await response.json();
+      
+      if (data.success) {
+        alert('Thanks for reaching out! I\'ll get back to you soon.');
+        setFormData({ name: '', email: '', message: '' });
+        onClose();
+      } else {
+        alert('Something went wrong. Please email me directly at yuleifu@umich.edu');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Something went wrong. Please email me directly at yuleifu@umich.edu');
+    }
   };
 
   return (
