@@ -2,11 +2,9 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import './TutorialOverlay.css';
 
-const TutorialOverlay = () => {
-  const [isVisible, setIsVisible] = useState(true);
-
+const TutorialOverlay = ({ isVisible, onDismiss }) => {
   const handleDismiss = () => {
-    setIsVisible(false);
+    onDismiss();
   };
 
   return (
