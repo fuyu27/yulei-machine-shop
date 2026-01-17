@@ -50,7 +50,7 @@ export const CONTENT = {
   ix_Macbook: {
     title: "Resume",
     isResume: true,
-    resumePath: "/Fu_Yulei_Resume_12:13.pdf",
+    resumePath: "/yulei_resume.pdf",
     sections: [
       {
         heading: "View My Resume",
