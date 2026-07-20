@@ -169,6 +169,7 @@ export const CONTENT = {
       }
     ],
     photos: [
+      { src: "/images/SlamAndPerception/high_fidelity_slam.png", caption: "High-Fidelity SLAM" },
       { src: "/images/SlamAndPerception/map.png", caption: "Occupancy Grid Map" },
       { src: "/images/SlamAndPerception/particle_detection.png", caption: "Particle Filter Detection" },
       { src: "/images/SlamAndPerception/SLAM_pose_particle_particle_filter.png", caption: "SLAM Pose & Particles" },
