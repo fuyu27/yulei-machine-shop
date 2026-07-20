@@ -1,18 +1,24 @@
 {
     "workbench.colorCustomizations": {
-        "activityBar.background": "#016E9D",
-        "activityBar.foreground": "#F6FCFF",
-        "titleBar.activeBackground": "#016E9D",
-        "titleBar.activeForeground": "#F6FCFF",
-        "titleBar.inactiveBackground": "#00374F",
-        "titleBar.inactiveForeground": "#F6FCFF",
+        "titleBar.activeBackground": "#760A76",
+        "titleBar.activeForeground": "#FFF9FF",
+        "titleBar.inactiveBackground": "#540754",
+        "titleBar.inactiveForeground": "#FFF9FF",
         "tab.inactiveBackground": "#016E9D",
-        "tab.activeBackground": "#01A5EB",
-        "tab.hoverBackground": "#01A5EB",
-        "tab.unfocusedHoverBackground": "#01A5EB",
+        "tab.activeBackground": "#016E9D",
+        "tab.hoverBackground": "#016E9D",
+        "tab.unfocusedHoverBackground": "#016E9D",
         "editorGroupHeader.tabsBackground": "#016E9D",
         "titleBar.border": "#016E9D",
         "sideBarTitle.background": "#016E9D",
-        "statusBar.background": "#016E9D"
-    }
+        "statusBar.background": "#540754",
+        "activityBar.background": "#540754",
+        "activityBar.foreground": "#FFFFFF",
+        "statusBar.foreground": "#FFF9FF",
+        "statusBar.debuggingBackground": "#540754",
+        "statusBar.debuggingForeground": "#FFF9FF",
+        "statusBar.noFolderBackground": "#540754",
+        "statusBar.noFolderForeground": "#FFF9FF"
+    },
+    "windowColors.baseColor": "#a00da0"
 }

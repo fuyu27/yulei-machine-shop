@@ -1,22 +1,23 @@
 export const LABELS = {
-  ix_Bedframe: "Ideas I'm Sleeping On",
-  ix_Humanoid: "About Me",
-  ix_Macbook: "Resume",
-  ix_MbotAssembled: "Projects",
-  ix_AprilTagCube: "Planning & Perception",
-  ix_Dremmel: "FIRST Robotics",
-  ix_Drawers: "Dev Skills & Tools",
-  ix_BostonDynamicsDog: "Languages + Core Competencies"
+  ix_yuleibot: "About Me",
+  ix_resume: "Resume",
+  ix_shelf: "Projects",
+  ix_mbot: "SLAM & Perception",
+  ix_embedded: "Embedded Systems",
+  ix_FRC: "FIRST Robotics",
+  ix_toolbench: "Dev Skills & Tools",
+  ix_progress_plant: "Budding Projects",
+  ix_frames: "Photo Gallery"
 };
 
 export const CONTENT = {
-  ix_Humanoid: {
-    title: "Hi, I'm Yulei :)",
-    headshot: "/images/bio/2025headshot.jpeg",
+  ix_yuleibot: {
+    title: "Hi, I'm Yulei (yoo-lay) :)",
+    headshot: "/images/Bio/2025headshot.jpeg",
     photos: [
       {
-        src: "/images/bio/guitar.png",
-        caption: "Kilby Girl - No Video Included"
+        src: "/images/Bio/guitar.png",
+        caption: "Kilby Girl - No Video Attached (sry)"
       }
     ],
     sections: [
@@ -24,10 +25,10 @@ export const CONTENT = {
         heading: "About Me",
         intro: "I'm currently a junior at the University of Michigan studying Robotics Engineering and Computer Science, graduating in May 2027.",
         bullets: [
-          "I'm interested in novel topics (robotics), and everything that comes with the territory (embedded software, some mechanical engineering, and mostly perception)",
-          "I enjoy indulging in challenging problems, whether it be stalking research papers, tinkering with \"jank\" (favorite FRC term) robots, or building somewhat relevant software",
-          "Some of my favorite projects remain NDA or private, but I'm always excited to share what I can about my work in robotics and embedded systems. I hate to admit it, but I apparently secretly enjoy CAD in my retirement as a design team member on my FRC team.",
-          "Outside of robotics, I play electric guitar (decently, I like to believe) and would like to pick up drums soon. I love painting and enjoy using my talents for goofy cards and whatnot for friends."
+          "I'm interested in novel topics (robots I guess...), and everything that comes with the territory (SLAM/perception, design, and mostly middleware (torture))",
+          "I enjoy indulging in challenging problems, whether it be stalking research papers, tinkering with \"jank\" (favorite FRC term) robots, or experimenting with relevant software",
+          "Some of my favorite projects I keep private (be moving on the dl) or are NDA altogether, but I'm always excited to share what I can about my work in robotics and embedded systems. Hate to admit it, but I apparently still (secretly) enjoy CADing in my retirement as a design team member on my FRC team.",
+          "Outside of robotics, I play electric guitar (mediocre-ly) and would like to pick up drums soon (if Facebook Marketplace allows...). I love messing around with artistic mediums in my free time, tattooing being the next."
         ]
       },
       {
@@ -35,8 +36,14 @@ export const CONTENT = {
         bullets: [
           "Website: yulei-machine-shop.com",
           "Email: yuleifu@umich.edu",
-          "LinkedIn: linkedin.com/in/yulei-fu",
-          "Phone: 734-239-4771"
+          "LinkedIn: linkedin.com/in/yulei-fu"
+        ]
+      },
+      {
+        heading: "Credits",
+        bullets: [
+          "HDRI environment (\"Studio Small 09\") courtesy of Poly Haven, CC0",
+          "Site code licensed MIT — see the LICENSE file in the repo"
         ]
       }
     ],
@@ -47,7 +54,7 @@ export const CONTENT = {
     ]
   },
 
-  ix_Macbook: {
+  ix_resume: {
     title: "Resume",
     isResume: true,
     resumePath: "/yulei_resume.pdf",
@@ -67,18 +74,13 @@ export const CONTENT = {
     ]
   },
 
-  ix_MbotAssembled: {
+  ix_shelf: {
     title: "Projects",
     sections: [
       {
-        heading: "Amazon Robotics - Embedded Software Engineer Co-Op",
-        subheading: "Jan 2025 - June 2025 | Westborough, MA",
-        bullets: [
-          "Designed and owned a C++ logging and system log capture pipeline for a safety-certified controller to replace an ad-hoc debugging process, cutting issue-reproduction time by 85% (6 hrs to 0.75 hrs)",
-          "Developed a robust multithreaded D-Bus service for embedded Linux safety systems, aggregating logs from multiple subsystems with safe batching, deterministic behavior, and low-latency IPC",
-          "Deployed and designed a remote Wi-Fi diagnostics API, adding to the system’s hardware-diagnostics suite, reducing field-troubleshooting from 2+ hours to 0.03 hours for on-sites that previously had no remote pathway to inspect connectivity issues",
-          "Architected, implemented, and shipped a telemetry pipeline delivering 10K+ messages/day to AWS S3 over MQTT, cutting data-loss by 94% and enabling a 7-engineer diagnostics team to finally access consistent, fleet-reliable field data"
-        ]
+        heading: "The Bookshelf",
+        intro: "Each item on this shelf represents a chapter of my work — the MBot covers SLAM & perception, the circuit board covers my embedded systems experience, and the trophy covers FIRST Robotics. Click them individually for the full story. Below are the projects that don't live on the shelf (yet).",
+        bullets: []
       },
       {
         heading: "Stirling Research Group - Research Intern",
@@ -89,14 +91,6 @@ export const CONTENT = {
           "Designed and developed the participant interface, displaying cumulative BTU burn and max BTU limits, allowing participants to monitor resource consumption during geological deviation tasks",
           "Created the experimenter dashboard with real-time heart rate monitoring, configurable alert thresholds, labeled task segments, and automatic data export, improving post-session analysis efficiency by 40%",
           "Connected the nRF52840 based heart-rate wearable to the testbench via bluetooth"
-        ]
-      },
-      {
-        heading: "MBot Planning and Perception (ROS2, C++)",
-        bullets: [
-          "Implemented SLAM-based localization and mapping on an MBot using ROS2 and SLAM Toolbox, achieving sub-10 cm pose accuracy",
-          "Built clearance-aware A* planner with obstacle-distance grid (8-connected flood-fill), reducing waypoints by 60% via line-of-sight pruning",
-          "Integrated LiDAR, odometry, and camera data for full-robot autonomy with AprilTag detection and wall-color classification"
         ]
       },
       {
@@ -111,48 +105,32 @@ export const CONTENT = {
       }
     ],
     chips: [
-      "C++",
-      "Python",
-      "ROS2",
-      "SLAM",
-      "AWS",
-      "D-Bus",
-      "Embedded Linux",
-      "MQTT",
-      "Computer Vision",
+      "JavaScript",
       "React",
       "Three.js",
-      "Blender"
+      "Blender",
+      "Data Visualization",
+      "Bluetooth"
     ]
   },
 
-  ix_Bedframe: {
-    title: "Ideas I'm Sleeping On",
+  ix_mbot: {
+    title: "SLAM & Perception",
     sections: [
       {
-        heading: "Future Interests",
+        heading: "Radiation Mapping SLAM (Current)",
         bullets: [
-          "Advanced robotic manipulation and control systems for complex tasks",
-          "Real-time embedded systems optimization and safety-critical software",
-          "Multi-robot coordination and swarm robotics",
-          "Autonomous navigation in unstructured environments"
+          "Extending SLAM-based mapping to fuse radiation sensor data into spatial maps — details coming soon"
         ]
       },
       {
-        heading: "Technologies I'd Love to Explore",
+        heading: "MBot Planning and Perception (ROS2, C++)",
         bullets: [
-          "Advanced control theory and model predictive control",
-          "Deep learning for robotics perception and planning",
-          "Hardware acceleration (FPGAs, custom ASICs) for real-time processing",
-          "Novel sensor fusion techniques for robust state estimation"
+          "Implemented SLAM-based localization and mapping on an MBot using ROS2 and SLAM Toolbox, achieving sub-10 cm pose accuracy",
+          "Built clearance-aware A* planner with obstacle-distance grid (8-connected flood-fill), reducing waypoints by 60% via line-of-sight pruning",
+          "Integrated LiDAR, odometry, and camera data for full-robot autonomy with AprilTag detection and wall-color classification"
         ]
-      }
-    ],
-  },
-
-  ix_AprilTagCube: {
-    title: "SLAM & Perception Projects",
-    sections: [
+      },
       {
         heading: "Occupancy Grid Mapping",
         bullets: [
@@ -191,19 +169,19 @@ export const CONTENT = {
       }
     ],
     photos: [
-      { src: "/images/slam_and_perception/map.png", caption: "Occupancy Grid Map" },
-      { src: "/images/slam_and_perception/particle_detection.png", caption: "Particle Filter Detection" },
-      { src: "/images/slam_and_perception/SLAM_pose_particle_particle_filter.png", caption: "SLAM Pose & Particles" },
-      { src: "/images/slam_and_perception/checkerboard_detection.png", caption: "Camera Calibration" },
-      { src: "/images/slam_and_perception/frontiers.png", caption: "Frontier Detection" },
-      { src: "/images/slam_and_perception/perception_and_mapping_casualty.png", caption: "Perception & Mapping Blooper" }
+      { src: "/images/SlamAndPerception/map.png", caption: "Occupancy Grid Map" },
+      { src: "/images/SlamAndPerception/particle_detection.png", caption: "Particle Filter Detection" },
+      { src: "/images/SlamAndPerception/SLAM_pose_particle_particle_filter.png", caption: "SLAM Pose & Particles" },
+      { src: "/images/SlamAndPerception/checkerboard_detection.png", caption: "Camera Calibration" },
+      { src: "/images/SlamAndPerception/frontiers.png", caption: "Frontier Detection" },
+      { src: "/images/SlamAndPerception/perception_and_mapping_casualty.png", caption: "Perception & Mapping Blooper" }
     ],
     chips: [
       "SLAM",
       "Particle Filter",
       "A* Planning",
       "Computer Vision",
-      "ROS",
+      "ROS2",
       "Occupancy Grid",
       "AprilTag",
       "Frontier Exploration",
@@ -212,7 +190,45 @@ export const CONTENT = {
     ]
   },
 
-  ix_Dremmel: {
+  ix_embedded: {
+    title: "Embedded Systems",
+    sections: [
+      {
+        heading: "Amazon Robotics - Embedded Software Engineer Co-Op",
+        subheading: "Jan 2025 - June 2025 | Westborough, MA",
+        bullets: [
+          "Designed and owned a C++ logging and system log capture pipeline for a safety-certified controller to replace an ad-hoc debugging process, cutting issue-reproduction time by 85% (6 hrs to 0.75 hrs)",
+          "Developed a robust multithreaded D-Bus service for embedded Linux safety systems, aggregating logs from multiple subsystems with safe batching, deterministic behavior, and low-latency IPC",
+          "Deployed and designed a remote Wi-Fi diagnostics API, adding to the system’s hardware-diagnostics suite, reducing field-troubleshooting from 2+ hours to 0.03 hours for on-sites that previously had no remote pathway to inspect connectivity issues",
+          "Architected, implemented, and shipped a telemetry pipeline delivering 10K+ messages/day to AWS S3 over MQTT, cutting data-loss by 94% and enabling a 7-engineer diagnostics team to finally access consistent, fleet-reliable field data"
+        ]
+      },
+      {
+        heading: "Stirling Research Group - Research Intern",
+        subheading: "Nov 2024 - Jan 2025 | Ann Arbor, MI",
+        bullets: [
+          "Implemented the Keytel metabolic-rate model in JavaScript to convert real-time heart-rate data into energy-expenditure estimates, enabling accurate British Thermal Unit (BTU) tracking for 4+ hour extravehicular activity (EVA) simulations",
+          "Architected data parsing from wearable heart-rate data at 20-second intervals, applied time-weighted averaging, and updated metabolic-rate estimates with 100% uptime across all test sessions",
+          "Designed and developed the participant interface, displaying cumulative BTU burn and max BTU limits, allowing participants to monitor resource consumption during geological deviation tasks",
+          "Created the experimenter dashboard with real-time heart rate monitoring, configurable alert thresholds, labeled task segments, and automatic data export, improving post-session analysis efficiency by 40%",
+          "Connected the nRF52840 based heart-rate wearable to the testbench via bluetooth"
+        ]
+      }
+    ],
+    chips: [
+      "C++",
+      "Embedded Linux",
+      "D-Bus",
+      "MQTT",
+      "AWS",
+      "Multithreading",
+      "Safety-Critical Software",
+      "JavaScript",
+      "Bluetooth"
+    ]
+  },
+
+  ix_FRC: {
     title: "FIRST Robotics Experience",
     sections: [
       {
@@ -269,8 +285,8 @@ export const CONTENT = {
     ]
   },
 
-  ix_Drawers: {
-    title: "Dev Skills & Technical Tools",
+  ix_toolbench: {
+    title: "Dev Skills, Tools & Core Competencies",
     sections: [
       {
         heading: "Programming Languages",
@@ -303,30 +319,6 @@ export const CONTENT = {
           "Blender - 3D modeling and visualization",
           "Git - Version control and collaboration"
         ]
-      }
-    ],
-    chips: [
-      "C++",
-      "Python",
-      "ROS2",
-      "AWS",
-      "Docker",
-      "Embedded Linux",
-      "OpenCV",
-      "CAD"
-    ]
-  },
-
-  ix_BostonDynamicsDog: {
-    title: "Languages + Core Competencies",
-    sections: [
-      {
-        heading: "Technical Expertise",
-        bullets: [
-          "Languages: C, C++, Python, Bash, JavaScript, Julia, MATLAB",
-          "Frameworks: ROS2, scikit-learn, NumPy, OpenCV, Flask",
-          "Tools: Docker, AWS (S3, IoT Core), Yocto Linux, Fusion360, Blender"
-        ]
       },
       {
         heading: "Core Competencies",
@@ -344,10 +336,91 @@ export const CONTENT = {
       "C++",
       "Python",
       "ROS2",
-      "Embedded Systems",
-      "SLAM",
       "AWS",
-      "Computer Vision"
+      "Docker",
+      "Embedded Linux",
+      "OpenCV",
+      "CAD"
+    ]
+  },
+
+  ix_progress_plant: {
+    title: "Budding Projects",
+    sections: [
+      {
+        heading: "Currently Growing",
+        bullets: [
+          "Radiation mapping SLAM — fusing radiation sensing into spatial maps",
+          "This 3D portfolio itself — remodeled scene, new interactions, and a photo gallery on the way"
+        ]
+      },
+      {
+        heading: "Future Interests",
+        bullets: [
+          "Advanced robotic manipulation and control systems for complex tasks",
+          "Real-time embedded systems optimization and safety-critical software",
+          "Multi-robot coordination and swarm robotics",
+          "Autonomous navigation in unstructured environments"
+        ]
+      },
+      {
+        heading: "Technologies I'd Love to Explore",
+        bullets: [
+          "Advanced control theory and model predictive control",
+          "Deep learning for robotics perception and planning",
+          "Hardware acceleration (FPGAs, custom ASICs) for real-time processing",
+          "Novel sensor fusion techniques for robust state estimation"
+        ]
+      }
+    ],
+  },
+
+  ix_frames: {
+    title: "Photo Gallery",
+    sections: [
+      {
+        heading: "The Full Archive",
+        intro: "Every photo from around this shop — robots, builds, bloopers, and the occasional guitar."
+      }
+    ],
+    photos: [
+      // Bio
+      { src: "/images/Bio/2025headshot.jpeg", caption: "2025 Headshot" },
+      { src: "/images/Bio/guitar.png", caption: "Kilby Girl - No Video Included" },
+      // FRC 3322
+      { src: "/images/FRC3322/cover_img.jpg", caption: "FRC 3322" },
+      { src: "/images/FRC3322/captains.jpeg", caption: "Team Captains" },
+      { src: "/images/FRC3322/comp_ready.jpeg", caption: "Competition Ready" },
+      { src: "/images/FRC3322/2021_bot.jpeg", caption: "2021 Robot" },
+      { src: "/images/FRC3322/build.jpeg", caption: "Build Session" },
+      { src: "/images/FRC3322/build_2.jpeg", caption: "Build Session 2" },
+      { src: "/images/FRC3322/testing.png", caption: "Robot Testing" },
+      { src: "/images/FRC3322/pit_ready.jpeg", caption: "Pit Ready" },
+      { src: "/images/FRC3322/pit_inspection_passed.jpeg", caption: "Inspection Passed" },
+      { src: "/images/FRC3322/pit_activities.jpg", caption: "Pit Activities" },
+      { src: "/images/FRC3322/wines_demo.jpeg", caption: "Wine's Demo" },
+      { src: "/images/FRC3322/prototying_hs_rob.JPG", caption: "Prototyping" },
+      { src: "/images/FRC3322/testing_prototype.jpg", caption: "Prototype Testing" },
+      // SLAM & Perception
+      { src: "/images/SlamAndPerception/high_fidelity_slam.png", caption: "High-Fidelity SLAM" },
+      { src: "/images/SlamAndPerception/map.png", caption: "Occupancy Grid Map" },
+      { src: "/images/SlamAndPerception/particle_detection.png", caption: "Particle Filter Detection" },
+      { src: "/images/SlamAndPerception/SLAM_pose_particle_particle_filter.png", caption: "SLAM Pose & Particles" },
+      { src: "/images/SlamAndPerception/checkerboard_detection.png", caption: "Camera Calibration" },
+      { src: "/images/SlamAndPerception/frontiers.png", caption: "Frontier Detection" },
+      { src: "/images/SlamAndPerception/perception_and_mapping_casualty.png", caption: "Perception & Mapping Blooper" },
+      // AR
+      { src: "/images/AR/goofy_AR_activity.JPG", caption: "AR Activity" },
+      { src: "/images/AR/goofy_ar.JPG", caption: "Goofing Around in AR" },
+      // Portfolio / this site
+      { src: "/images/Portfolio/updated_model_blender_final_render.png", caption: "Machine Shop - Final Render" },
+      { src: "/images/Portfolio/updated_model_draft.png", caption: "Machine Shop - Draft" },
+      { src: "/images/Portfolio/fusion_prototype.png", caption: "Fusion Prototype" },
+      { src: "/images/Portfolio/nuked_robot_cad.png", caption: "Nuked Robot CAD" }
+    ],
+    chips: [
+      "Photography",
+      "Memories"
     ]
   },
 

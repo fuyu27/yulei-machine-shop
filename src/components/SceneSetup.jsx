@@ -3,22 +3,26 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader';
 import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader';
 import { LABELS } from '../data/resumeContent';
+import addTitleText from './TitleText';
 
 function setupScene(mountRef, setLoading) {
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.1, 1000);
   
   if (window.innerWidth <= 768) {
-    camera.position.set(11, 6, 11);
+    camera.position.set(8.5, 4.7, 8.5);
   } else {
-    camera.position.set(9, 6, 9);
+    camera.position.set(7, 4.7, 7);
   }
+  // Orient toward the room now (OrbitControls will keep this target) so the
+  // title text can be billboarded against the actual initial view.
+  camera.lookAt(0, 0, 0);
 
   const renderer = new THREE.WebGLRenderer({ antialias: true });
   renderer.setSize(window.innerWidth, window.innerHeight);
   renderer.setPixelRatio(window.devicePixelRatio);
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.0;
+  renderer.toneMappingExposure = 0.9;
   mountRef.current.appendChild(renderer.domElement);
 
   const outlinedMeshes = [];
@@ -29,7 +33,7 @@ function setupScene(mountRef, setLoading) {
   scene.background = backgroundColor;
 
   const rgbeLoader = new RGBELoader();
-  rgbeLoader.load('https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/sunset_fairway_1k.hdr', (texture) => {
+  rgbeLoader.load('https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/studio_small_09_1k.hdr', (texture) => {
     texture.mapping = THREE.EquirectangularReflectionMapping;
     scene.environment = texture;
     scene.background = backgroundColor;
@@ -54,21 +58,24 @@ function setupScene(mountRef, setLoading) {
       const interactiveGroups = {};
 
       gltf.scene.traverse((child) => {
-      if (child.name && child.name.startsWith('ix_')) {
+      // The GLB wraps each hotspot in a duplicate group (e.g. ix_mbot:1 -> ix_mbot);
+      // only register the innermost ix_ group so meshes aren't collected twice.
+      const hasIxChild = child.children && child.children.some((c) => c.name && c.name.startsWith('ix_'));
+      if (child.name && child.name.startsWith('ix_') && !hasIxChild) {
         interactiveGroups[child.name] = child;
         console.log(`Found interactive node: ${child.name} (type: ${child.type})`);
-        
+
         const groupMeshes = [];
         child.traverse((descendant) => {
           if (descendant.isMesh) {
             descendant.userData.interactiveName = child.name;
             outlinedMeshes.push(descendant);
             groupMeshes.push(descendant);
-            
+
             console.log(`  - Added mesh: ${descendant.name || 'unnamed'} to ${child.name}`);
           }
         });
-        
+
         navigationMeshes[child.name] = groupMeshes;
         outlinePairs[child.name] = groupMeshes;
         console.log(`✓ Interactive object: ${child.name} -> ${LABELS[child.name] || 'No label'} (${groupMeshes.length} meshes)`);
@@ -87,14 +94,16 @@ function setupScene(mountRef, setLoading) {
     setLoading(false);
   });
 
-  const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+  addTitleText(scene, camera);
+
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.3);
   scene.add(ambientLight);
 
-  const directionalLight = new THREE.DirectionalLight(0xffffff, 1.0);
+  const directionalLight = new THREE.DirectionalLight(0xffffff, 0.25);
   directionalLight.position.set(5, 10, 5);
   scene.add(directionalLight);
 
-  const directionalLight2 = new THREE.DirectionalLight(0xffffff, 0.5);
+  const directionalLight2 = new THREE.DirectionalLight(0xffffff, 0.3);
   directionalLight2.position.set(-5, 8, -5);
   scene.add(directionalLight2);
 
