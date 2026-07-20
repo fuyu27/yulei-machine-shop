@@ -415,7 +415,6 @@ export const CONTENT = {
       { src: "/images/AR/goofy_ar.JPG", caption: "Goofing Around in AR" },
       // Portfolio / this site
       { src: "/images/Portfolio/updated_model_blender_final_render.png", caption: "Machine Shop - Final Render" },
-      { src: "/images/Portfolio/updated_model_draft.png", caption: "Machine Shop - Draft" },
       { src: "/images/Portfolio/fusion_prototype.png", caption: "Fusion Prototype" },
       { src: "/images/Portfolio/nuked_robot_cad.png", caption: "Nuked Robot CAD" }
     ],
