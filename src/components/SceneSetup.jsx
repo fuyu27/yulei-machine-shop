@@ -48,7 +48,10 @@ function setupScene(mountRef, setLoading) {
   // Load optimized GLB model
   console.log('Starting to load GLB model...');
   loader.load(
-    '/models/yulei_machine_shop.glb',
+    // Simplified + Draco build (6.6MB / 1.3M tris vs the source's 27MB / 7.1M);
+    // regenerate from the source GLB with scripts in the repo history if the
+    // model changes: gltf-transform optimize --join false --flatten false --instance false
+    '/models/yulei_machine_shop_optimized.glb',
     (gltf) => {
       console.log('GLB model loaded successfully!', gltf);
       scene.add(gltf.scene);
