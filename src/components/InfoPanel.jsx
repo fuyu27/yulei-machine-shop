@@ -59,6 +59,27 @@ export default function InfoPanel({ onClose, contentKey }) {
             zIndex: 2,
           }} />
 
+          {/* Close button — pinned to the clipboard, not the scrollable PDF frame below */}
+          <div
+            onClick={onClose}
+            style={{
+              position: 'absolute',
+              right: '1.25rem',
+              top: '0.75rem',
+              zIndex: 3,
+              color: '#233C67',
+              fontSize: '0.8rem',
+              fontWeight: '600',
+              cursor: 'pointer',
+              backgroundColor: 'rgba(255, 255, 255, 0.9)',
+              padding: '0.35rem 0.75rem',
+              borderRadius: '20px',
+              boxShadow: '0 2px 8px rgba(0, 0, 0, 0.15)',
+            }}
+          >
+            ✕ close
+          </div>
+
           {/* Inner white paper */}
           <div style={{
             backgroundColor: '#fffef8',
@@ -72,23 +93,7 @@ export default function InfoPanel({ onClose, contentKey }) {
             flexDirection: 'column',
           }}
           >
-            {/* Close hint */}
-            <div 
-              onClick={onClose}
-              style={{
-                position: 'absolute',
-                right: '1.5rem',
-                top: '1rem',
-                color: '#94a3b8',
-                fontSize: '0.8rem',
-                fontWeight: '500',
-                cursor: 'pointer',
-              }}
-            >
-              ✕ close
-            </div>
-          
-            <h2 style={{ 
+            <h2 style={{
               color: '#1e293b', 
               fontSize: '2rem', 
               marginBottom: '1.5rem',
@@ -220,6 +225,27 @@ export default function InfoPanel({ onClose, contentKey }) {
           zIndex: 2,
         }} />
 
+        {/* Close button — pinned to the clipboard, not the scrollable paper below */}
+        <div
+          onClick={onClose}
+          style={{
+            position: 'absolute',
+            right: '1.25rem',
+            top: '0.75rem',
+            zIndex: 3,
+            color: '#233C67',
+            fontSize: '0.8rem',
+            fontWeight: '600',
+            cursor: 'pointer',
+            backgroundColor: 'rgba(255, 255, 255, 0.9)',
+            padding: '0.35rem 0.75rem',
+            borderRadius: '20px',
+            boxShadow: '0 2px 8px rgba(0, 0, 0, 0.15)',
+          }}
+        >
+          ✕ close
+        </div>
+
         {/* Inner white paper */}
         <div style={{
           backgroundColor: '#fffef8',
@@ -232,23 +258,7 @@ export default function InfoPanel({ onClose, contentKey }) {
           position: 'relative',
         }}
         >
-          {/* Close hint */}
-          <div 
-            onClick={onClose}
-            style={{
-              position: 'absolute',
-              right: '1.5rem',
-              top: '1rem',
-              color: '#94a3b8',
-              fontSize: '0.8rem',
-              fontWeight: '500',
-              cursor: 'pointer',
-            }}
-          >
-            ✕ close
-          </div>
-        
-        <h2 style={{ 
+        <h2 style={{
           color: '#1e293b', 
           fontSize: '2rem', 
           marginBottom: '1.5rem',

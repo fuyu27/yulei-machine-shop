@@ -9,56 +9,30 @@ canvas {
   display: block; /* Remove default inline spacing */
 }
 
-/* Help button - circular gradient button for reopening tutorial */
+/* Help button - matches the hamburger toggle (white card, navy icon) */
 .faq-button {
-  width: 50px; /* Fixed width */
-  height: 50px; /* Fixed height */
-  border-radius: 50%; /* Make it circular */
-  border: none; /* Remove default button border */
-  background-color: #ffe53b; /* Fallback yellow background */
-  background-image: linear-gradient(147deg, #ffe53b 0%, #ff2525 74%); /* Yellow to red gradient */
-  display: flex; /* Use flexbox for centering */
-  align-items: center; /* Center content vertically */
-  justify-content: center; /* Center content horizontally */
-  cursor: pointer; /* Show pointer on hover */
-  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.151); /* Add subtle shadow */
-  position: relative; /* Position context for tooltip */
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  position: relative;
+  transition: transform 0.2s ease;
+}
+
+.faq-button:hover {
+  transform: translateY(-2px);
 }
 
 /* Style SVG icon inside help button */
 .faq-button svg {
-  height: 1.5em; /* Set icon size */
-  fill: white; /* Make icon white */
-}
-
-/* Animate SVG icon on hover */
-.faq-button:hover svg {
-  animation: jello-vertical 0.7s both; /* Apply jello animation */
-}
-
-/* Jello animation - vertical squash and stretch effect */
-@keyframes jello-vertical {
-  0% {
-    transform: scale3d(1, 1, 1); /* Normal state */
-  }
-  30% {
-    transform: scale3d(0.75, 1.25, 1); /* Squash horizontally, stretch vertically */
-  }
-  40% {
-    transform: scale3d(1.25, 0.75, 1); /* Stretch horizontally, squash vertically */
-  }
-  50% {
-    transform: scale3d(0.85, 1.15, 1); /* Smaller squash/stretch */
-  }
-  65% {
-    transform: scale3d(1.05, 0.95, 1); /* Subtle stretch/squash */
-  }
-  75% {
-    transform: scale3d(0.95, 1.05, 1); /* Subtle squash/stretch */
-  }
-  100% {
-    transform: scale3d(1, 1, 1); /* Return to normal */
-  }
+  height: 1.75em;
+  fill: #233C67;
 }
 
 /* Tooltip that appears above button on hover */
@@ -66,8 +40,7 @@ canvas {
   position: absolute; /* Position relative to button */
   top: -20px; /* Initial position above button */
   opacity: 0; /* Hidden by default */
-  background-color: #ffe53b; /* Fallback yellow background */
-  background-image: linear-gradient(147deg, #ffe53b 0%, #ff2525 74%); /* Match button gradient */
+  background-color: #233C67; /* Navy to match site palette */
   color: white; /* White text */
   padding: 5px 10px; /* Add padding around text */
   border-radius: 5px; /* Rounded corners */
@@ -85,9 +58,7 @@ canvas {
   content: ""; /* Create pseudo-element */
   width: 10px; /* Arrow width */
   height: 10px; /* Arrow height */
-  background-color: #ff2525; /* Red color matching gradient end */
-  background-size: 1000%; /* Large background for gradient effect */
-  background-position: center; /* Center the gradient */
+  background-color: #233C67; /* Navy matching tooltip */
   transform: rotate(45deg); /* Rotate to create diamond/arrow shape */
   bottom: -15%; /* Position at bottom of tooltip */
   transition-duration: 0.3s; /* Smooth transition */

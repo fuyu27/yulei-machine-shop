@@ -35,8 +35,9 @@ function ContactForm({ onClose }) {
       });
 
       const data = await response.json();
-      
-      if (data.success) {
+
+      // FormSubmit returns success as the string "true"/"false", not a boolean
+      if (data.success === true || data.success === 'true') {
         alert('Thanks for reaching out! I\'ll get back to you soon.');
         setFormData({ name: '', email: '', message: '' });
         onClose();

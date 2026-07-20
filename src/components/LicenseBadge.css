@@ -1,0 +1,37 @@
+.license-badge {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.75);
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  letter-spacing: 0.01em;
+}
+
+.license-sep {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.license-badge a {
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.license-badge a:hover {
+  color: #ffe07a;
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .license-badge {
+    bottom: 20px;
+    left: 20px;
+    font-size: 0.7rem;
+  }
+}
