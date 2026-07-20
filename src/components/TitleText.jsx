@@ -5,11 +5,11 @@ import helvetikerBold from 'three/examples/fonts/helvetiker_bold.typeface.json';
 
 // Top-to-bottom lines of the title and their text sizes (world units).
 const LINES = [
-  { text: "YULEI'S MACHINE", size: 0.30 },
-  { text: 'SHOP', size: 0.30 },
-  { text: '(PORTFOLIO)', size: 0.22 },
+  { text: "YULEI'S MACHINE", size: 0.24 },
+  { text: 'SHOP', size: 0.24 },
+  { text: '(PORTFOLIO)', size: 0.17 },
 ];
-const LINE_GAP = 0.14;
+const LINE_GAP = 0.11;
 
 // Where the title sits in the *initial* view, in normalized device coords
 // (-1..1). The group is billboarded to the starting camera, so on load it
@@ -17,7 +17,10 @@ const LINE_GAP = 0.14;
 // then reveals it as extruded 3D text floating in space.
 const TITLE_NDC_X = -0.9; // left edge of the text block
 const TITLE_NDC_Y = -0.55; // bottom edge of the text block
-const TITLE_DISTANCE = 6; // world units in front of the initial camera
+const TITLE_DISTANCE = 7; // desired world units in front of the initial camera
+// The title must stay above the floor plane (y = 0) or the Reflector hides
+// it; its distance is automatically capped to keep its bottom edge above this.
+const TITLE_FLOOR_MARGIN = 0.1;
 
 function makeTextMesh(text, size, font, material) {
   const geometry = new TextGeometry(text, {
@@ -68,14 +71,21 @@ function addTitleText(scene, camera) {
   const right = new THREE.Vector3().setFromMatrixColumn(camera.matrixWorld, 0);
   const up = new THREE.Vector3().setFromMatrixColumn(camera.matrixWorld, 1);
 
-  const halfH = Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)) * TITLE_DISTANCE;
-  const halfW = halfH * camera.aspect;
+  // Direction from the camera to the anchor point per unit of distance
+  // (the NDC offsets scale linearly with distance, so this is constant).
+  const tanHalf = Math.tan(THREE.MathUtils.degToRad(camera.fov / 2));
+  const anchorDir = forward.clone()
+    .addScaledVector(right, TITLE_NDC_X * tanHalf * camera.aspect)
+    .addScaledVector(up, TITLE_NDC_Y * tanHalf);
 
-  group.position
-    .copy(camera.position)
-    .addScaledVector(forward, TITLE_DISTANCE)
-    .addScaledVector(right, TITLE_NDC_X * halfW)
-    .addScaledVector(up, TITLE_NDC_Y * halfH);
+  // Cap the distance so the text's bottom edge never dips below the floor.
+  let distance = TITLE_DISTANCE;
+  if (anchorDir.y < 0) {
+    const maxDistance = (camera.position.y - TITLE_FLOOR_MARGIN) / -anchorDir.y;
+    distance = Math.min(distance, maxDistance);
+  }
+
+  group.position.copy(camera.position).addScaledVector(anchorDir, distance);
 
   scene.add(group);
   return group;

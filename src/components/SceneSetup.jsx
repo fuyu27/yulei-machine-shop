@@ -10,9 +10,9 @@ function setupScene(mountRef, setLoading) {
   const camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.1, 1000);
   
   if (window.innerWidth <= 768) {
-    camera.position.set(8.5, 4.7, 8.5);
+    camera.position.set(7, 3.9, 7);
   } else {
-    camera.position.set(7, 4.7, 7);
+    camera.position.set(5.5, 3.7, 5.5);
   }
   // Orient toward the room now (OrbitControls will keep this target) so the
   // title text can be billboarded against the actual initial view.
