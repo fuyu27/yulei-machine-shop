@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
+import { track } from '@vercel/analytics';
 import InfoPanel from './InfoPanel';
 import addReflector from './Reflector';
 import applyPostProcessing from './PostProcessing';
@@ -179,6 +180,14 @@ function ModelViewer() {
     };
     document.querySelector("canvas").addEventListener('pointerdown', onPointerDown);
 
+    // Single entry point for opening a hotspot, so the analytics event fires
+    // whether the panel was opened from the 3D scene or the hamburger menu.
+    const openPanel = (name, source) => {
+      setPanelContent(name);
+      setIsPanelOpen(true);
+      track('hotspot_open', { hotspot: name, source });
+    };
+
     const onClick = (event) => {
       const wasDrag = pointerDownAt &&
         Math.hypot(event.clientX - pointerDownAt.x, event.clientY - pointerDownAt.y) > 5;
@@ -220,8 +229,7 @@ function ModelViewer() {
         }
 
         if (LABELS[effectiveName]) {
-          setPanelContent(effectiveName);
-          setIsPanelOpen(true);
+          openPanel(effectiveName, 'scene');
         }
       }
     };
@@ -229,12 +237,12 @@ function ModelViewer() {
 
     const handleOpenContactForm = () => {
       setIsContactFormOpen(true);
+      track('contact_open');
     };
     window.addEventListener('openContactForm', handleOpenContactForm);
 
     const handleOpenInfoPanel = (event) => {
-      setPanelContent(event.detail);
-      setIsPanelOpen(true);
+      openPanel(event.detail, 'menu');
     };
     window.addEventListener('openInfoPanel', handleOpenInfoPanel);
 
